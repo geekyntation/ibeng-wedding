@@ -33,13 +33,13 @@ export default function SplashScreen({ isFading, onClose }: { isFading: boolean,
   
     return (
         <section id="splash-screen" className={twMerge(labelFont.className, "w-full max-w-md h-svh fixed top-0 left-1/2 -translate-x-1/2 z-[999] transition-opacity duration-1000 ease-in-out flex", isFading ? 'opacity-0' : 'opacity-100')}>
-            <Image src="/splash-screen.jpeg" alt="splash-scren" fill className="object-cover z-50" />
+            <Image src="/intro-3.jpeg" alt="splash-scren" fill className="object-cover z-50" />
             <div className="z-[998] bg-linear-to-b from-red-950/25 via-black/25 to-red-950/25 w-full h-svh absolute top-0 left-0" />
 
             <div className="z-[999] w-full flex flex-col items-center justify-between gap-8 px-6 py-14 text-white text-center">
                 <h3 className="text-sm">Turut mengundang ke acara pernikahan</h3>
 
-                <div className={twMerge(coupleFont.className, "flex flex-col gap-4 text-6xl")}>
+                <div className={twMerge(coupleFont.className, "mt-4 flex flex-col gap-4 text-6xl")}>
                     <b>Renaldi</b>
                     <b>&</b>
                     <b>Wulan</b>
