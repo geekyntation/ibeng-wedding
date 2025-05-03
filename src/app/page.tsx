@@ -1,5 +1,6 @@
 "use client"
 
+import Intro from "@/components/layout/intro";
 import SplashScreen from "@/components/layout/splashScreen";
 import { useState } from "react";
 
@@ -11,13 +12,15 @@ export default function Home() {
     setIsFading(true)
     setTimeout(() => {
       setIsSplash(false)
-    }, 500)
+    }, 1000)
   }
   return (
-    <main className="w-full max-w-md mx-auto">
+    <main className="w-full max-w-md mx-auto overflow-hidden">
       {isSplash && (
         <SplashScreen isFading={isFading} onClose={onSplashClose} />
       )}
+
+      <Intro isOnScreen={!isSplash} />
     </main>
   )
 }
