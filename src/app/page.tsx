@@ -6,14 +6,19 @@ import DateAndPlace from "@/components/layout/dateAndPlace";
 import Gallery from "@/components/layout/gallery";
 import Intro from "@/components/layout/intro";
 import SplashScreen from "@/components/layout/splashScreen";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [isSplash, setIsSplash] = useState<boolean>(true)
   const [isFading, setIsFading] = useState<boolean>(false)
 
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
   const onSplashClose = () => {
     setIsFading(true)
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
     setTimeout(() => {
       setIsSplash(false)
       document.body.classList.remove('overflow-hidden')
@@ -29,6 +34,8 @@ export default function Home() {
       {isSplash && (
         <SplashScreen isFading={isFading} onClose={onSplashClose} />
       )}
+
+      <audio loop ref={audioRef} src="/song.mp3" />
 
       <Intro isOnScreen={!isSplash} />
       <BrideGroom />
