@@ -1,5 +1,6 @@
 "use client"
 
+import ArRum from "@/components/layout/arrum";
 import BrideGroom from "@/components/layout/brideGroom";
 import Comments from "@/components/layout/comments";
 import DateAndPlace from "@/components/layout/dateAndPlace";
@@ -46,6 +47,7 @@ export default function Home() {
       <audio loop ref={audioRef} src="/song.mp3" />
 
       <Intro isOnScreen={!isSplash} />
+      <ArRum />
       <BrideGroom />
       <DateAndPlace />
       <Gallery />

@@ -20,14 +20,15 @@ export default function BrideGroom() {
         >
             <div className="w-full h-[150svh] bg-black/50 absolute top-0 left-0 z-0" />
             <div className="w-full flex flex-col gap-8 px-6 py-8 justify-center items-center z-50 text-white">
-                <motion.p
+                <motion.div
                     initial={{ opacity: 0, y: -40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 2 }}
-                    className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center")}
+                    className={twMerge(labelFont.className, "z-50 text-sm text-balance text-center flex flex-col gap-2")}
                 >
-                    Mengharapkan Kehadiran di Acara Pernikahan
-                </motion.p>
+                    <p className="text-center italic">{"Assalamu'alaikum Wr Wb"}</p>
+                    <p className={twMerge(raleway.className, "text-center text-balance text-xs")}>Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i pada acara resepsi pernikahan kami</p>
+                </motion.div>
                 <motion.div
                     initial={{ opacity: 0, scale: 1.1 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -58,7 +59,7 @@ export default function BrideGroom() {
                     <div className="w-48 h-48 rounded-full border border-white object-cover overflow-hidden bg-[url(/bride.jpeg)] bg-cover bg-center" />
 
                     <p className={twMerge(labelFont.className, "text-xl")}>Wulan Sari Anggraeni</p>
-                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra pertama dari Bpk. Ade Ruhyat dan Ibu. Iis Aisyah</p>
+                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putri pertama dari Bpk. Ade Ruhyat dan Ibu. Iis Aisyah</p>
                 </motion.div>
             </div>
         </section>

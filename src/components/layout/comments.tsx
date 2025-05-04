@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from 'motion/react'
-import { Croissant_One, Raleway } from 'next/font/google'
+import { Croissant_One, Dancing_Script, Raleway } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
-import { Loader2Icon, SendIcon } from 'lucide-react'
+import { ClipboardCopyIcon, Loader2Icon, SendIcon } from 'lucide-react'
 import { Switch } from '../ui/switch'
 import { useCallback, useEffect, useState } from 'react'
 import { getComments, insertComment, TComment } from '@/lib/data'
@@ -13,6 +14,7 @@ import Footer from './footer'
 
 const labelFont = Croissant_One({ subsets: ['latin'], weight: ['400'] })
 const raleway = Raleway({ subsets: ['latin'] })
+const ds = Dancing_Script({ subsets: ['latin'] })
 
 type TForm = {
     name: string,
@@ -51,6 +53,11 @@ export default function Comments() {
             setIsLoading(false)
         }
     }, [])
+
+    async function copyToClipboard(value: string) {
+        await navigator.clipboard.writeText(value)
+        toast.success("Nomor berhasil di salin")
+    }
 
     async function onSubmit() {
         try {
@@ -101,10 +108,66 @@ export default function Comments() {
 
             <div className="w-full flex flex-col gap-8 px-6 py-4 items-center z-50 text-white bg-black/5 backdrop-blur-sm rounded-lg min-h-svh">
                 <motion.p
+                    initial={{ opacity: 0, y: -40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 2 }}
+                    className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center")}
+                >
+                    Tanda Kasih
+                </motion.p>
+
+                <motion.p
+                    initial={{ opacity: 0, y: -40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 2 }}
+                    className={twMerge(ds.className, "z-50 text-sm text-center")}
+                >
+                    Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan kehadiran dan hadiah indah Anda.
+                </motion.p>
+
+                <motion.div
+                    className="grid grid-cols-2 gap-2"
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 2, delay: 0.3 }}
+                >
+                    <div className="w-full p-2 rounded-md bg-white flex items-center justify-center">
+                        <img src="/seabank.png" className="w-full h-auto" alt="Seabank Logo" />
+                    </div>
+                    <div className={twMerge(raleway.className, "flex flex-col gap-2 text-white")}>
+                        <p className="font-medium">901283444638</p>
+                        <button onClick={() => copyToClipboard("901283444638")} className="cursor-pointer px-4 py-2 text-xs bg-orange-800/95 text-white font-medium rounded-md justify-center hover:bg-orange-800/100 inline-flex items-center gap-2">
+                            <ClipboardCopyIcon className="w-4 h-4" />
+                            <p>Salin Nomor</p>
+                        </button>
+                        <p className="font-medium">Seabank: Wulan Sari Anggraeni</p>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    className="grid grid-cols-2 gap-2"
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 2, delay: 0.3 }}
+                >
+                    <div className="w-full p-2 rounded-md bg-white flex items-center justify-center">
+                        <img src="/dana.png" className="w-full h-auto" alt="Dana Logo" />
+                    </div>
+                    <div className={twMerge(raleway.className, "flex flex-col gap-2 text-white")}>
+                        <p className="font-medium">087747863269</p>
+                        <button onClick={() => copyToClipboard("087747863269")} className="cursor-pointer px-4 py-2 text-xs bg-orange-800/95 text-white font-medium rounded-md justify-center hover:bg-orange-800/100 inline-flex items-center gap-2">
+                            <ClipboardCopyIcon className="w-4 h-4" />
+                            <p>Salin Nomor</p>
+                        </button>
+                        <p className="font-medium">Dana: Renaldi Dwi Putra</p>
+                    </div>
+                </motion.div>
+
+                <motion.p
                         initial={{ opacity: 0, y: -40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 2 }}
-                        className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center")}
+                        className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center mt-8")}
                     >
                     Ucapan Bahagia
                 </motion.p>
