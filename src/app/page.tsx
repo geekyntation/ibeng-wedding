@@ -1,6 +1,7 @@
 "use client"
 
 import BrideGroom from "@/components/layout/brideGroom";
+import Comments from "@/components/layout/comments";
 import DateAndPlace from "@/components/layout/dateAndPlace";
 import Gallery from "@/components/layout/gallery";
 import Intro from "@/components/layout/intro";
@@ -33,6 +34,7 @@ export default function Home() {
       <BrideGroom />
       <DateAndPlace />
       <Gallery />
+      <Comments />
     </main>
   )
 }
