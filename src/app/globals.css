@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.arabic-text {
+  font-family: Arial, sans-serif; /* Or any other Arabic-supporting font */
+  direction: rtl; /* For right-to-left alignment */
+}
