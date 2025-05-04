@@ -16,6 +16,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Renaldi & Wulan",
   description: "Undangan Acara Pernikahan Renaldi dan Wulan",
+  openGraph: {
+    type: 'website',
+    countryName: 'Indonesia',
+    description: 'Undangan Acara Pernikahan Renaldi dan Wulan',
+    emails: 'geekynation@gmail.com',
+    siteName: 'Renaldi & Wulan',
+    title: 'Renaldi & Wulan',
+    phoneNumbers: '+6285157878637',
+    images: {
+      url: '/intro-3.jpeg',
+    }
+  }
 };
 
 export default function RootLayout({
