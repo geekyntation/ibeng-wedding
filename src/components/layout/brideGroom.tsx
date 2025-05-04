@@ -58,7 +58,7 @@ export default function BrideGroom() {
                     <div className="w-48 h-48 rounded-full border border-white object-cover overflow-hidden bg-[url(/bride.jpeg)] bg-cover bg-center" />
 
                     <p className={twMerge(labelFont.className, "text-xl")}>Wulan Sari Anggraeni</p>
-                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra pertama dari Bpk. Ade Ruhyat dan Ibu. Iis Aisyah</p>
+                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putri pertama dari Bpk. Ade Ruhyat dan Ibu. Iis Aisyah</p>
                 </motion.div>
             </div>
         </section>
