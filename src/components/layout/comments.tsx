@@ -9,6 +9,7 @@ import { Switch } from '../ui/switch'
 import { useCallback, useEffect, useState } from 'react'
 import { getComments, insertComment, TComment } from '@/lib/data'
 import { toast } from 'sonner'
+import Footer from './footer'
 
 const labelFont = Croissant_One({ subsets: ['latin'], weight: ['400'] })
 const raleway = Raleway({ subsets: ['latin'] })
@@ -189,6 +190,8 @@ export default function Comments() {
                     ))}
                 </div>
             </div>
+
+            <Footer />
         </section>
     )
 }
