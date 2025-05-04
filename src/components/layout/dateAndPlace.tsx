@@ -58,21 +58,21 @@ export default function DateAndPlace() {
                     <div className="col-span-2 flex flex-col gap-2">
                         <p className={twMerge(labelFont.className, "text-lg text-center")}>Akad</p>
                         <div className="flex flex-col justify-around items-center h-full">
-                            <p className={twMerge(raleway.className, "text-lg font-medium")}>09:00</p>
+                            <p className={twMerge(raleway.className, "text-lg font-medium")}>07:00</p>
                             <div className="w-full relative flex items-center">
                                 <div className="flex-grow border-t border-white"></div>
                                 <span className={twMerge(raleway.className, "flex-shrink mx-1 text-white")}>s.d</span>
                                 <div className="flex-grow border-t border-white"></div>
                             </div>
 
-                            <p className={twMerge(raleway.className, "font-medium text-lg")}>11:00</p>
+                            <p className={twMerge(raleway.className, "font-medium text-lg")}>09:00</p>
                         </div>
                     </div>
                     <div className="col-span-1 place-self-center w-px h-full bg-white" />
                     <div className="col-span-2 flex flex-col gap-2">
                         <p className={twMerge(labelFont.className, "text-lg text-center")}>Resepsi</p>
                         <div className="flex flex-col justify-around items-center h-full">
-                            <p className={twMerge(raleway.className, "text-lg font-medium")}>11:00</p>
+                            <p className={twMerge(raleway.className, "text-lg font-medium")}>09:00</p>
                             <div className="w-full relative flex items-center">
                                 <div className="flex-grow border-t border-white"></div>
                                 <span className={twMerge(raleway.className, "flex-shrink mx-1 text-white")}>s.d</span>
