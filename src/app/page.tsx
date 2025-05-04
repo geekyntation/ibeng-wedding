@@ -1,6 +1,7 @@
 "use client"
 
 import BrideGroom from "@/components/layout/brideGroom";
+import DateAndPlace from "@/components/layout/dateAndPlace";
 import Intro from "@/components/layout/intro";
 import SplashScreen from "@/components/layout/splashScreen";
 import { useEffect, useState } from "react";
@@ -29,6 +30,7 @@ export default function Home() {
 
       <Intro isOnScreen={!isSplash} />
       <BrideGroom />
+      <DateAndPlace />
     </main>
   )
 }
