@@ -67,6 +67,12 @@ export default function Comments() {
             if (res) {
                 setData(prev => [...prev, res])
             }
+
+            setForm({
+                comment: '',
+                name: '',
+                isComing: false,
+            })
         } catch (err) {
             console.error(err)
         } finally {
@@ -111,7 +117,7 @@ export default function Comments() {
                             transition={{ duration: 2, delay: 0.3 }}
                         >
                             <Label className="text-xs" htmlFor="name">Nama</Label>
-                            <Input onBlur={(e) => setForm(prev => ({ ...prev, name: e.target.value }))} name="name" id="name" placeholder='Nama anda...' className="bg-white placeholder:text-black/50 text-black text-xs" />
+                            <Input value={form.name} onChange={(e) => setForm(prev => ({ ...prev, name: e.target.value }))} name="name" id="name" placeholder='Nama anda...' className="bg-white placeholder:text-black/50 text-black text-xs" />
                         </motion.div>
                         <motion.div
                             className="w-full flex flex-col gap-2"
@@ -120,7 +126,7 @@ export default function Comments() {
                             transition={{ duration: 2, delay: 0.3 }}
                         >
                             <Label className="text-xs" htmlFor="ucapan">Ucapan Anda</Label>
-                            <Textarea onBlur={(e) => setForm(prev => ({ ...prev, comment: e.target.value }))} placeholder='Ucapan...' className="bg-white placeholder:text-black/50 text-black text-xs" />
+                            <Textarea value={form.comment} onChange={(e) => setForm(prev => ({ ...prev, comment: e.target.value }))} placeholder='Ucapan...' className="bg-white placeholder:text-black/50 text-black text-xs" />
                         </motion.div>
 
                         <motion.div className="inline-flex items-center gap-1" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2, delay: 0.3 }}>
@@ -153,7 +159,9 @@ export default function Comments() {
 
                     {isLoading && <p className="animate-pulse text-white/85">Memuat data...</p>}
 
-                    {!isLoading && data.map((value) => (
+                    {!isLoading && data.length < 1 && <p className="text-white/85 text-center text-xs">Belum ada ucapan</p>}
+
+                    {!isLoading && data.length > 0 && data.map((value) => (
                         <motion.div
                             className="w-full flex flex-col gap-2"
                             initial={{ opacity: 0, x: -40 }}
