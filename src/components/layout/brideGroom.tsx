@@ -37,7 +37,7 @@ export default function BrideGroom() {
                     <div className="w-48 h-48 rounded-full border border-white object-cover overflow-hidden bg-[url(/groom.jpeg)] bg-cover bg-center" />
 
                     <p className={twMerge(labelFont.className, "text-xl")}>Renaldi Dwi Putra</p>
-                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra kedua dari Bpk. Joko Widodo dan Ibu. Iriana Joko Widodo</p>
+                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra kedua dari Bpk. Tatang Suherman dan Ibu. Dewi Utami</p>
                 </motion.div>
 
                 <motion.p
@@ -57,8 +57,8 @@ export default function BrideGroom() {
                 >
                     <div className="w-48 h-48 rounded-full border border-white object-cover overflow-hidden bg-[url(/bride.jpeg)] bg-cover bg-center" />
 
-                    <p className={twMerge(labelFont.className, "text-xl")}>Wulan</p>
-                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra pertama dari Bpk. Prabowo Subianto dan Bpk. Mayor Teddy</p>
+                    <p className={twMerge(labelFont.className, "text-xl")}>Wulan Sari Anggraeni</p>
+                    <p className={twMerge(raleway.className, "text-center text-xs")}>Putra pertama dari Bpk. Ade Ruhyat dan Ibu. Iis Aisyah</p>
                 </motion.div>
             </div>
         </section>
