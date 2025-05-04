@@ -10,7 +10,7 @@ export default function BrideGroom() {
     return (
         <section
             id="bride-groom"
-            className="w-full min-h-svh"
+            className="w-full min-h-svh overflow-hidden"
             style={{
                 backgroundImage: 'url(/texture.jpg)',
                 backgroundSize: 'cover',
