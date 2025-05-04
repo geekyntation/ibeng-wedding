@@ -2,18 +2,47 @@ import { Croissant_One, Raleway } from "next/font/google";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion } from 'motion/react'
+import { useEffect, useMemo, useState } from "react";
 
 const labelFont = Croissant_One({ subsets: ['latin'], weight: ['400'] })
 const raleway = Raleway({ subsets: ['latin'] })
 
 export default function DateAndPlace() {
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+    const targetDate = useMemo(() => new Date(Date.parse('07-07-2025, 07:00')), [])
+
+    useEffect(() => {
+      const calculateTimeLeft = () => {
+        const now = new Date();
+        const difference = (targetDate.getTime() - now.getTime());
+
+        if (difference <= 0) {
+          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+
+        return {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / (1000 * 60)) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      };
+
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft());
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }, [targetDate]);
+
     return (
         <section
             id="date-place"
-            className="w-full h-svh relative flex"
+            className="w-full min-h-svh relative flex"
         >
             <Image src="/date-and-place-1.jpeg" alt="Date and place" className="object-cover z-0" fill />
-            <div className="z-0 bg-linear-to-b from-red-950/50 via-black/50 to-red-950/50 w-full h-svh absolute top-0 left-0" />
+            <div className="z-0 bg-linear-to-b from-red-950/50 via-black/50 to-red-950/50 w-full h-[150vh] absolute top-0 left-0" />
 
             <div className="w-full flex flex-col gap-8 text-white z-50 items-center justify-between px-6 py-8">
                 <div className="w-full flex flex-col gap-4 items-center">
@@ -39,15 +68,6 @@ export default function DateAndPlace() {
                         </div>
                     </motion.div>
                 </div>
-
-                {/* <motion.img
-                    src="/rose.png"
-                    alt="Rose"
-                    className="w-28 h-auto"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 2, delay: 0.5 }}
-                /> */}
 
                 <motion.div
                     className="grid grid-cols-5 gap-4"
@@ -81,6 +101,27 @@ export default function DateAndPlace() {
 
                             <p className={twMerge(raleway.className, "font-medium text-lg")}>Selesai</p>
                         </div>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 1.2 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, delay: 0.3 }}
+                    className="col-span-5"
+                >
+                    <div className="w-full inline-flex items-center justify-between gap-2">
+                        {[
+                            { label: 'Hari', value: timeLeft.days },
+                            { label: 'Jam', value: timeLeft.hours },
+                            { label: 'Menit', value: timeLeft.minutes },
+                            { label: 'Detik', value: timeLeft.seconds },
+                        ].map((item) => (
+                            <div key={item.label} className="flex shrink-0 flex-col px-4 py-2 text-center rounded-md bg-red-950/65 backdrop-blur-sm">
+                                <span className="text-4xl font-bold text-white">{item.value.toString().padStart(2, '0')}</span>
+                                <span className="text-sm text-neutral-50">{item.label}</span>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
 
