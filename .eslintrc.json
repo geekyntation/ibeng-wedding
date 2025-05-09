@@ -1,0 +1,16 @@
+    {
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        // Customize rules here for formatting
+        "indent": ["error", 2], // Example: enforce 2-space indentation
+        "semi": ["error", "always"], // Example: enforce semicolons
+        "quotes": ["error", "single"], // Example: enforce single quotes
+        "no-trailing-spaces": "error" // Example: remove trailing spaces
+        // Add more formatting rules as needed
+      }
+    }
