@@ -1,3 +1,5 @@
+"use client"
+
 import { AnimatePresence, motion } from 'motion/react'
 import { Croissant_One, Dancing_Script } from "next/font/google";
 import { useEffect, useMemo, useState } from 'react';

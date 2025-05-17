@@ -1,8 +1,11 @@
+"use client"
+
 import { Croissant_One, Raleway } from "next/font/google";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion } from 'motion/react'
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import moment from 'moment'
 
 const labelFont = Croissant_One({ subsets: ['latin'], weight: ['400'] })
 const raleway = Raleway({ subsets: ['latin'] })
@@ -10,31 +13,30 @@ const raleway = Raleway({ subsets: ['latin'] })
 export default function DateAndPlace() {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    const targetDate = useMemo(() => new Date(Date.parse('07-07-2025, 07:00')), [])
-
     useEffect(() => {
-      const calculateTimeLeft = () => {
-        const now = new Date();
-        const difference = (targetDate.getTime() - now.getTime());
+        const calculateTimeLeft = () => {
+            const now = moment()
+            const targetDate = moment('07-07-2025, 07:00')
+            const difference = targetDate.diff(now);
 
-        if (difference <= 0) {
-          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        }
+            if (difference <= 0) {
+                return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+            }
 
-        return {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / (1000 * 60)) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
+            return {
+                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((difference / (1000 * 60)) % 60),
+                seconds: Math.floor((difference / 1000) % 60),
+            };
         };
-      };
 
-      const timer = setInterval(() => {
-        setTimeLeft(calculateTimeLeft());
-      }, 1000);
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
 
-      return () => clearInterval(timer);
-    }, [targetDate]);
+        return () => clearInterval(timer);
+    }, []);
 
     return (
         <section
@@ -46,7 +48,7 @@ export default function DateAndPlace() {
 
             <div className="w-full flex flex-col gap-8 text-white z-50 items-center justify-between px-6 py-8">
                 <div className="w-full flex flex-col gap-4 items-center">
-                    <motion.p 
+                    <motion.p
                         className={twMerge(labelFont.className, 'text-lg')}
                         initial={{ opacity: 0, y: -40 }}
                         whileInView={{ opacity: 1, y: 0 }}

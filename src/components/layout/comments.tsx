@@ -37,7 +37,7 @@ export default function Comments() {
         try {
             setIsLoading(true)
             const result = await getComments()
-            
+
             const resultData: TComment[] = result.map((res) => ({
                 comment_id: res.id,
                 name: res.c_name,
@@ -151,24 +151,24 @@ export default function Comments() {
                     transition={{ duration: 2, delay: 0.3 }}
                 >
                     <div className="w-full p-2 rounded-md bg-white flex items-center justify-center">
-                        <img src="/dana.png" className="w-full h-auto" alt="Dana Logo" />
+                        <img src="/mandiri.png" className="w-full h-auto" alt="Mandiri Logo" />
                     </div>
                     <div className={twMerge(raleway.className, "flex flex-col gap-2 text-white")}>
-                        <p className="font-medium">087747863269</p>
-                        <button onClick={() => copyToClipboard("087747863269")} className="cursor-pointer px-4 py-2 text-xs bg-orange-800/95 text-white font-medium rounded-md justify-center hover:bg-orange-800/100 inline-flex items-center gap-2">
+                        <p className="font-medium">1770023360560</p>
+                        <button onClick={() => copyToClipboard("1770023360560")} className="cursor-pointer px-4 py-2 text-xs bg-orange-800/95 text-white font-medium rounded-md justify-center hover:bg-orange-800/100 inline-flex items-center gap-2">
                             <ClipboardCopyIcon className="w-4 h-4" />
                             <p>Salin Nomor</p>
                         </button>
-                        <p className="font-medium">Dana: Renaldi Dwi Putra</p>
+                        <p className="font-medium">Mandiri: Renaldi Dwi Putra</p>
                     </div>
                 </motion.div>
 
                 <motion.p
-                        initial={{ opacity: 0, y: -40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 2 }}
-                        className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center mt-8")}
-                    >
+                    initial={{ opacity: 0, y: -40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 2 }}
+                    className={twMerge(labelFont.className, "z-50 text-lg text-balance text-center mt-8")}
+                >
                     Ucapan Bahagia
                 </motion.p>
 
@@ -221,7 +221,12 @@ export default function Comments() {
                         <div className="flex-grow border-t border-white"></div>
                     </motion.div>
 
-                    {isLoading && <p className="animate-pulse text-white/85">Memuat data...</p>}
+                    {isLoading && (
+                        <div className="w-full flex flex-col gap-1 items-center justify-center">
+                            <img src="/logo.png" className="w-8 h-8 animate-bounce duration-500" alt="loading..." />
+                            <p className="text-xs text-[#CFA162] animate-bounce delay-200 duration-500">Memuat ucapan...</p>
+                        </div>
+                    )}
 
                     {!isLoading && data.length < 1 && <p className="text-white/85 text-center text-xs">Belum ada ucapan</p>}
 
